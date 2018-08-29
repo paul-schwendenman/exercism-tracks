@@ -1,7 +1,2 @@
-
-# Python
-*.py[cdo]
-__pycache__/
-
 # Exercism
 .solution.json
