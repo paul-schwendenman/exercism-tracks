@@ -40,6 +40,11 @@ class Rational(object):
         return Rational(abs(self.numer), abs(self.denom))
 
     def __pow__(self, power):
+        if isinstance(power, float):
+            return (self.numer ** power) / (self.denom ** power)
+        elif power < 0:
+            return Rational(self.denom**abs(power), self.numer**abs(power))
+
         return Rational(self.numer**power, self.denom**power)
 
     def __rpow__(self, base):

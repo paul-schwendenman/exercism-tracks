@@ -84,6 +84,12 @@ class RationalNumbersTest(unittest.TestCase):
     def test_raise_a_negative_rational_to_a_positive_integer_power(self):
         self.assertEqual(Rational(-1, 2) ** 3, Rational(-1, 8))
 
+    def test_raise_a_positive_rational_to_a_negitive_integer_power(self):
+        self.assertEqual(Rational(1, 2) ** -3, Rational(8, 1))
+
+    def test_raise_a_positive_rational_to_a_real_power(self):
+        self.assertAlmostEqual(Rational(1, 9) ** -1.0, 9, places=8)
+
     def test_raise_zero_to_an_integer_power(self):
         self.assertEqual(Rational(0, 1) ** 5, Rational(0, 1))
 
