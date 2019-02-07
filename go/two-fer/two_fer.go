@@ -1,4 +1,5 @@
 package twofer
+
 import "fmt"
 
 // ShareWith should have a comment documenting it.
