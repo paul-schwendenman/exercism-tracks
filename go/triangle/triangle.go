@@ -1,28 +1,47 @@
-// This is a "stub" file.  It's a little start on your solution.
-// It's not a complete solution though; you have to write some code.
-
-// Package triangle should have a package comment that summarizes what it's about.
-// https://golang.org/doc/effective_go.html#commentary
 package triangle
 
+import "math"
 
-// Notice KindFromSides() returns this type. Pick a suitable data type.
-type Kind
+// Kind represents return code for triangle
+type Kind int
 
 const (
-    // Pick values for the following identifiers used by the test program.
-    NaT // not a triangle
-    Equ // equilateral
-    Iso // isosceles
-    Sca // scalene
+	// NaT is not a triangle
+	NaT = 0
+	// Equ is an equilateral triangle
+	Equ = 1
+	// Iso is an isosceles triangle
+	Iso = 2
+	// Sca is a scalene triangle
+	Sca = 3
 )
 
-// KindFromSides should have a comment documenting it.
+// KindFromSides identifies the kind of a triangle based on shape side lengths
 func KindFromSides(a, b, c float64) Kind {
-	// Write some code here to pass the test suite.
-	// Then remove all the stock comments.
-	// They're here to help you get started but they only clutter a finished solution.
-	// If you leave them in, reviewers may protest!
 	var k Kind
+
+	if !isValidTriangle(a, b, c) {
+		k = NaT
+	} else if a == b && a == c {
+		k = Equ
+	} else if a == b || a == c || b == c {
+		k = Iso
+	} else {
+		k = Sca
+	}
+
 	return k
+}
+
+func isValidTriangle(a, b, c float64) bool {
+	triangleInequality := (a+b >= c && a+c >= b && b+c >= a)
+	return triangleInequality && isValidLength(a) && isValidLength(b) && isValidLength(c)
+}
+
+func isValidLength(number float64) bool {
+	nan := math.NaN()
+	pinf := math.Inf(1)
+	ninf := math.Inf(-1)
+
+	return number != nan && number != pinf && number != ninf && number > 0
 }
