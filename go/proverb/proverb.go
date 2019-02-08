@@ -4,15 +4,19 @@ import "fmt"
 
 // Proverb generator
 func Proverb(rhyme []string) (poem []string) {
-	if len(rhyme) == 0 {
+	rhymeLen := len(rhyme)
+
+	if rhymeLen == 0 {
 		return
 	}
 
-	for pos := 0; pos < len(rhyme)-1; pos++ {
-		poem = append(poem, fmt.Sprintf("For want of a %s the %s was lost.", rhyme[pos], rhyme[pos+1]))
+	poem = make([]string, rhymeLen)
+
+	for pos := 0; pos < rhymeLen-1; pos++ {
+		poem[pos] = fmt.Sprintf("For want of a %s the %s was lost.", rhyme[pos], rhyme[pos+1])
 	}
 
-	poem = append(poem, fmt.Sprintf("And all for the want of a %s.", rhyme[0]))
+	poem[rhymeLen-1] = fmt.Sprintf("And all for the want of a %s.", rhyme[0])
 
 	return
 }
