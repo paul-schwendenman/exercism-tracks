@@ -3,32 +3,22 @@ package scrabble
 import "strings"
 
 var letterValue = map[rune]int{
-	'a': 1,
-	'b': 3,
-	'c': 3,
-	'd': 2,
-	'e': 1,
-	'f': 4,
-	'g': 2,
-	'h': 4,
-	'i': 1,
-	'j': 8,
-	'k': 5,
-	'l': 1,
-	'm': 3,
-	'n': 1,
-	'o': 1,
-	'p': 3,
-	'q': 10,
-	'r': 1,
-	's': 1,
-	't': 1,
-	'u': 1,
-	'v': 4,
-	'w': 4,
-	'x': 8,
-	'y': 4,
-	'z': 10,
+	'b': 2,
+	'c': 2,
+	'd': 1,
+	'f': 3,
+	'g': 1,
+	'h': 3,
+	'j': 7,
+	'k': 4,
+	'm': 2,
+	'p': 2,
+	'q': 9,
+	'v': 3,
+	'w': 3,
+	'x': 7,
+	'y': 3,
+	'z': 9,
 }
 
 // Score calculates a word's value in the game scrabble
@@ -36,7 +26,7 @@ func Score(word string) int {
 	score := 0
 
 	for _, letter := range strings.ToLower(word) {
-		score += letterValue[letter]
+		score += letterValue[letter] + 1
 	}
 	return score
 }
