@@ -9,10 +9,10 @@ var dnaToRna = map[rune]rune{
 
 // ToRNA converts dna strand to rna
 func ToRNA(dna string) string {
-	rna := ""
+	rna := make([]rune, len(dna))
 
-	for _, nucleotide := range dna {
-		rna += string(dnaToRna[nucleotide])
+	for pos, nucleotide := range dna {
+		rna[pos] = dnaToRna[nucleotide]
 	}
-	return rna
+	return string(rna)
 }
