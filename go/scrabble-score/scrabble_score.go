@@ -8,38 +8,18 @@ func Score(word string) int {
 
 	for _, letter := range word {
 		switch unicode.ToLower(letter) {
-		case 'b':
-			score += 3
-		case 'c':
-			score += 3
-		case 'd':
-			score += 2
-		case 'f':
-			score += 4
-		case 'g':
-			score += 2
-		case 'h':
-			score += 4
-		case 'j':
+		case 'q', 'z':
+			score += 10
+		case 'j', 'x':
 			score += 8
 		case 'k':
 			score += 5
-		case 'm':
+		case 'f', 'h', 'v', 'w', 'y':
+			score += 4
+		case 'b', 'c', 'm', 'p':
 			score += 3
-		case 'p':
-			score += 3
-		case 'q':
-			score += 10
-		case 'v':
-			score += 4
-		case 'w':
-			score += 4
-		case 'x':
-			score += 8
-		case 'y':
-			score += 4
-		case 'z':
-			score += 10
+		case 'd', 'g':
+			score += 2
 		default:
 			score++
 		}
