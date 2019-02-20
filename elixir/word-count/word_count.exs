@@ -9,7 +9,6 @@ defmodule Words do
     sentence
     |> String.downcase
     |> String.split(" ")
-    |> Enum.map(fn x -> {x, 1} end)
-    |> Map.new
+    |> Enum.reduce(%{}, fn x, acc -> Map.update(acc, x, 1, &(&1 + 1)) end)
   end
 end

@@ -17,7 +17,6 @@ defmodule WordsTest do
     assert Words.count("one of each") == expected
   end
 
-  @tag :pending
   test "count multiple occurrences" do
     expected = %{"one" => 1, "fish" => 4, "two" => 1, "red" => 1, "blue" => 1}
     assert Words.count("one fish two fish red fish blue fish") == expected
@@ -46,7 +45,6 @@ defmodule WordsTest do
     assert Words.count("two_words") == expected
   end
 
-  @tag :pending
   test "normalize case" do
     expected = %{"go" => 3}
     assert Words.count("go Go GO") == expected
