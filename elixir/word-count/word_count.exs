@@ -7,8 +7,9 @@ defmodule Words do
   @spec count(String.t()) :: map
   def count(sentence) do
     sentence
+    |> String.replace(~r/[,:!&@$%^]/, "")
     |> String.downcase
-    |> String.split(~r/[ _]/)
+    |> String.split(~r/[ _]/, trim: true)
     |> Enum.reduce(%{}, fn x, acc -> Map.update(acc, x, 1, &(&1 + 1)) end)
   end
 end
