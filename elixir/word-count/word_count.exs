@@ -9,7 +9,7 @@ defmodule Words do
     sentence
     |> String.replace(~r/[,:!&@$%^]/, "")
     |> String.downcase
-    |> String.split(~r/[ _]/, trim: true)
+    |> String.split(~r/[ _]+/)
     |> Enum.reduce(%{}, fn x, acc -> Map.update(acc, x, 1, &(&1 + 1)) end)
   end
 end
