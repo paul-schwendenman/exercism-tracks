@@ -4,7 +4,7 @@ import "unicode"
 
 // IsIsogram checks if word is isogram
 func IsIsogram(word string) bool {
-	count := make(map[rune]int)
+	seen := make(map[rune]bool)
 
 	for _, char := range word {
 		if !unicode.IsLetter(char) {
@@ -12,10 +12,10 @@ func IsIsogram(word string) bool {
 		}
 		lower := unicode.ToLower(char)
 
-		count[lower]++
-		if count[lower] > 1 {
+		if seen[lower] {
 			return false
 		}
+		seen[lower] = true
 	}
 	return true
 }
