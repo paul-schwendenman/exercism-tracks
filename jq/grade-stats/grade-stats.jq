@@ -25,5 +25,5 @@ def count_letter_grades:
   | to_entries
   | map(.value)
   | {A: 0, B: 0, C: 0, D: 0, F: 0} as $initial_value
-  | reduce .[] as $grade ($initial_value; . + {($grade): (.[$grade] + 1)})
+  | reduce .[] as $grade ($initial_value; .[$grade] += 1)
 ;
